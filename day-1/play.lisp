@@ -8,11 +8,14 @@
 (defun parse-numbers (strings)
   (mapcar #'parse-integer strings))
 
+(defun get-numbers ()
+  (let ((infile (open "input" :if-does-not-exist nil)))
+    (let ((numbers (parse-numbers (read-lines infile))))
+      (return-from get-numbers numbers))
+    (close infile)))
+
 (defun sum-to-2020 (x y)
   (= 2020 (+ x y)))
 
-(let ((infile (open "input" :if-does-not-exist nil)))
-  (let ((numbers (parse-numbers (read-lines infile))))
-    (write numbers))
-  (close infile))
-
+(let ((numbers (get-numbers)))
+  (write numbers))
