@@ -10,8 +10,7 @@
 
 (defun get-numbers (fname)
   (let ((infile (open fname :if-does-not-exist nil)))
-    (let ((numbers (parse-numbers (read-lines infile))))
-      (return-from get-numbers numbers))
+    (return-from get-numbers (parse-numbers (read-lines infile)))
     (close infile)))
 
 (defun sum-to-2020 (x y)
