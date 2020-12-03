@@ -30,3 +30,4 @@
 (let ((numbers (get-numbers "input")))
   (let ((pair (find-2020-pair numbers)))
     (write (* (car pair) (cdr pair)))))
+
